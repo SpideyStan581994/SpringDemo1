@@ -5,8 +5,6 @@ import com.ulaps.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 
@@ -30,6 +28,11 @@ public class StudentController {
     @PostMapping
     public void registerNewStudent(@RequestBody Student student){
         studentService.addNewStudent(student);
+    }
+
+    @DeleteMapping(path = "{studentId}")
+    public void deleteStudent(@PathVariable("studentId") Long id){
+        studentService.deleteStudent(id);
     }
 
 }
