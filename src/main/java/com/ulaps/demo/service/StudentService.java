@@ -1,6 +1,8 @@
 package com.ulaps.demo.service;
 
 import com.ulaps.demo.model.Student;
+import com.ulaps.demo.repositories.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
@@ -11,12 +13,15 @@ import java.util.List;
 @Component
 public class StudentService {
 
+    private final StudentRepository studentRepository;
+
+    @Autowired
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
     public List<Student> getStudents(){
-        return List.of(new Student(1L,
-                "Steven Tan",
-                "stan581994@gmail.com",
-                LocalDate.of(1994, Month.MAY,8),
-                26));
+        return studentRepository.findAll();
     }
 
 
