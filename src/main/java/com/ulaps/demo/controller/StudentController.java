@@ -31,11 +31,6 @@ public class StudentController {
 
     @PostMapping
     public void addStudent(){
-        studentService.addStudent(new Student(2L,
-                "John Doe",
-                "johnDoe@gmail.com",
-                LocalDate.of(1992, Month.DECEMBER,18),
-                28));
     }
 
 }
