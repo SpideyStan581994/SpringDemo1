@@ -1,9 +1,22 @@
 package com.ulaps.demo.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table
 public class Student {
 
+    @Id
+    @SequenceGenerator(
+            name = "student_sequence",
+            allocationSize = 1,
+            sequenceName = "student_sequence"
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "student_sequence"
+    )
     private Long id;
     private String name;
     private String email;
